@@ -8,7 +8,7 @@ import grails.plugin.hibernatehijacker.template.HibernateTemplates
 
 class HibernateHijackerGrailsPlugin {
     // the plugin version
-    def version = "1.0"
+    def version = "1.01"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.4 > *"
     // resources that are excluded from plugin packaging

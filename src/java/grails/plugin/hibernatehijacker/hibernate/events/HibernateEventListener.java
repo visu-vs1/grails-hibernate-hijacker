@@ -96,7 +96,7 @@ public class HibernateEventListener implements AutoFlushEventListener, DeleteEve
         publishEvent("postDelete", event, event.getEntity());
     }
 
-    @Override
+//    @Override
     public boolean requiresPostCommitHanding(EntityPersister entityPersister) {
         return false;
     }

@@ -11,7 +11,7 @@ import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.function.SQLFunctionRegistry;
 import org.hibernate.engine.ResultSetMappingDefinition;
-import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
+import org.hibernate.service.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.engine.jdbc.spi.JdbcServices;
 import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.hibernate.engine.profile.FetchProfile;
@@ -23,7 +23,7 @@ import org.hibernate.engine.spi.SessionBuilderImplementor;
 import org.hibernate.exception.spi.SQLExceptionConverter;
 import org.hibernate.id.IdentifierGenerator;
 import org.hibernate.id.factory.IdentifierGeneratorFactory;
-import org.hibernate.internal.NamedQueryRepository;
+//import org.hibernate.internal.NamedQueryRepository;
 import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.metadata.CollectionMetadata;
@@ -317,20 +317,20 @@ public class SessionFactoryProxy extends org.codehaus.groovy.grails.orm.hibernat
         return getCurrentSessionFactory().getNamedQuery(queryName);
     }
 
-    @Override
+    /*@Override
     public void registerNamedQueryDefinition(String name, NamedQueryDefinition definition) {
         getCurrentSessionFactory().registerNamedQueryDefinition(name, definition);
-    }
+    }*/
 
     @Override
     public NamedSQLQueryDefinition getNamedSQLQuery(String queryName) {
         return getCurrentSessionFactory().getNamedSQLQuery(queryName);
     }
 
-    @Override
+    /*@Override
     public void registerNamedSQLQueryDefinition(String name, NamedSQLQueryDefinition definition) {
         getCurrentSessionFactory().registerNamedSQLQueryDefinition(name, definition);
-    }
+    }*/
 
     @Override
     public ResultSetMappingDefinition getResultSetMapping(String name) {
@@ -417,15 +417,15 @@ public class SessionFactoryProxy extends org.codehaus.groovy.grails.orm.hibernat
         return getCurrentSessionFactory().getCurrentTenantIdentifierResolver();
     }
 
-    @Override
+    /*@Override
     public NamedQueryRepository getNamedQueryRepository() {
         return getCurrentSessionFactory().getNamedQueryRepository();
-    }
+    }*/
 
-    @Override
+    /*@Override
     public Iterable<EntityNameResolver> iterateEntityNameResolvers() {
         return getCurrentSessionFactory().iterateEntityNameResolvers();
-    }
+    }*/
 
     @Override
     public Reference getReference() throws NamingException {

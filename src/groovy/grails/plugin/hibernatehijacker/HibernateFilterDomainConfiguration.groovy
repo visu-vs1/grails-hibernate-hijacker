@@ -4,6 +4,7 @@ import grails.plugin.hibernatehijacker.hibernate.HibernateConfigPostProcessor
 import org.codehaus.groovy.grails.orm.hibernate.cfg.GrailsAnnotationConfiguration
 import org.hibernate.MappingException
 import org.hibernate.cfg.Configuration
+import grails.util.Holders
 
 /**
  * Add Filter to Domain Classes.
@@ -25,6 +26,7 @@ class HibernateFilterDomainConfiguration extends GrailsAnnotationConfiguration {
     }
 
     private void doConfigPostProcessing(Configuration configuration) {
+        def applicationContext = Holders.grailsApplication.mainContext 
         Collection<HibernateConfigPostProcessor> processors = applicationContext.getBeansOfType(HibernateConfigPostProcessor.class).values();
         for (HibernateConfigPostProcessor processor : processors) {
             processor.doPostProcessing(configuration);

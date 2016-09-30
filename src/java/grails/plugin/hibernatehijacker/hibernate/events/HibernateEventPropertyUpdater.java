@@ -2,7 +2,7 @@ package grails.plugin.hibernatehijacker.hibernate.events;
 
 import grails.plugin.hibernatehijacker.exception.HibernateHijackerException;
 import org.hibernate.event.spi.PreInsertEvent;
-import org.hibernate.tuple.NonIdentifierAttribute;
+import org.hibernate.tuple.StandardProperty;
 import org.hibernate.tuple.entity.EntityMetamodel;
 
 import java.util.HashMap;
@@ -45,8 +45,8 @@ public class HibernateEventPropertyUpdater {
     private Map<String, Integer> extractPropertyIndexMap(EntityMetamodel metaModel) {
         int i = 0;
         Map<String, Integer> propertyIndexes = new HashMap<String, Integer>();
-        NonIdentifierAttribute[] properties = metaModel.getProperties();
-        for (NonIdentifierAttribute property : properties) {
+        StandardProperty[] properties = metaModel.getProperties();
+        for (StandardProperty property : properties) {
             String propertyName = property.getName();
             propertyIndexes.put(propertyName, i++);
         }

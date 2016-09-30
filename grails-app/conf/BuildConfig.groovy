@@ -25,6 +25,7 @@ grails.project.dependency.resolution = {
     }
     log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     repositories {
+
         grailsCentral()
         mavenLocal()
         mavenCentral()
@@ -44,11 +45,13 @@ grails.project.dependency.resolution = {
             export = false
         }
 
-        compile ":hibernate4:4.3.10", {
+        compile ":hibernate4:4.1.11.7", {
+			excludes 'hibernate-jpa-2.0-api'
+            excludes 'jboss-transaction-api_1.1_spec'
             export = false
         }
 
-        compile ':hawk-eventing:1.0', {
+        compile ':hawk-eventing:0.5.1', {
             excludes 'svn'
         }
     }

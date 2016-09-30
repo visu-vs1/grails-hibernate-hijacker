@@ -8,6 +8,8 @@ import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.core.Ordered;
+import org.hibernate.SessionFactory;
+import java.util.Set;
 
 /**
  * Replaces the default ConfigurableLocalSessionFactoryBean with WrappedSessionFactoryBean.
@@ -22,6 +24,18 @@ public class SessionFactoryPostProcessor implements BeanFactoryPostProcessor, Or
         BeanDefinition beanDef = beanFactory.getBeanDefinition("sessionFactory");
         beanDef.setBeanClassName(WrappedSessionFactoryBean.class.getName());
         setBeanProperties(beanFactory, beanDef);
+
+        /*beanDef = beanFactory.getBeanDefinition("sessionFactory_bonita");
+        beanDef.setBeanClassName(WrappedSessionFactoryBean.class.getName());
+        setBeanProperties(beanFactory, beanDef);*/
+        /*Object[] sessionFactoryBeanNames = beanFactory.getBeansOfType(SessionFactory.class).keySet().toArray();
+        for(int i=0; i<sessionFactoryBeanNames.length; i++) {
+            String sessionFactoryBeanName = (String)sessionFactoryBeanNames[i];
+            System.out.println("sessionFactoryBeanName: " + sessionFactoryBeanName);
+            BeanDefinition beanDef = beanFactory.getBeanDefinition(sessionFactoryBeanName);
+            beanDef.setBeanClassName(WrappedSessionFactoryBean.class.getName());
+            setBeanProperties(beanFactory, beanDef);
+        }*/
     }
 
     private void setBeanProperties(ConfigurableListableBeanFactory beanFactory, BeanDefinition beanDef) {
